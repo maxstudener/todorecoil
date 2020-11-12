@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+import * as serviceWorker from './serviceWorker'
+import { RecoilRoot } from 'recoil';
+import { BreadProvider } from 'material-bread'
+
+const theme = {
+  primary: {
+    main: '#333333',
+    button: '#76ff03',
+    buttonText: '#000000'
+  },
+  background: {
+    default: '#333333',
+  },
+  textColor: {
+    primary: '#FFFFFF',
+    secondary: '#000000',
+  }
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <RecoilRoot>
+      <BreadProvider value={theme}>
+        <App />
+      </BreadProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
